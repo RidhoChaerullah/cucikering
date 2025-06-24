@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuci Kering - Layanan Laundry Terpercaya</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        // Konfigurasi warna kustom untuk Tailwind CSS
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Warna Primary (Utama)
+                        primary: {
+                            DEFAULT: '#4F378A',
+                            '50': '#EFEAF7',
+                            '100': '#EADDFF', // Warna Secondary
+                            '200': '#D4C6F1',
+                            '300': '#BBAAE4',
+                            '400': '#A28DD6',
+                            '500': '#8970C8',
+                            '600': '#6F53B7',
+                            '700': '#4F378A', // Warna Primary Utama
+                            '800': '#3B2967',
+                            '900': '#281B45',
+                        },
+                        // Warna Main/Background Utama
+                        main: '#f3f4f6',
+                    }
+                },
+                fontFamily: {
+                    'sans': ['Inter', 'sans-serif'],
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom styles tambahan */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f3f4f6;
+            /* Menggunakan warna main sebagai background body */
+            font-family: 'Inter', sans-serif;
+        }
+
+        .section-title {
+            @apply text-3xl md:text-4xl font-bold text-gray-800 text-center;
+        }
+
+        .section-subtitle {
+            @apply mt-2 text-lg text-gray-600 text-center max-w-2xl mx-auto;
+        }
+
+        /* Animasi untuk FAQ */
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .faq-question.active+.faq-answer {
+            max-height: 500px;
+            /* Atur tinggi maksimal yang cukup */
+        }
+
+        .faq-question svg {
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .faq-question.active svg {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="bg-white/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-primary-700">Cuci Kering</a>
+            <div class="hidden md:flex items-center space-x-8">
+                <a href="#features" class="text-gray-600 hover:text-primary-700 transition-colors">Fitur</a>
+                <a href="#testimonials" class="text-gray-600 hover:text-primary-700 transition-colors">Testimoni</a>
+                <a href="#pricing" class="text-gray-600 hover:text-primary-700 transition-colors">Harga</a>
+                <a href="#faq" class="text-gray-600 hover:text-primary-700 transition-colors">FAQ</a>
+            </div>
+            <a href="#pricing"
+                class="hidden md:block bg-primary-700 text-white px-5 py-2 rounded-lg shadow hover:bg-primary-800 transition-all">
+                Mulai Sekarang
+            </a>
+            <button id="mobile-menu-button" class="md:hidden p-2 rounded-md text-gray-600 hover:bg-gray-100">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4 space-y-2">
+            <a href="#features" class="block text-gray-600 hover:text-primary-700 transition-colors">Fitur</a>
+            <a href="#testimonials" class="block text-gray-600 hover:text-primary-700 transition-colors">Testimoni</a>
+            <a href="#pricing" class="block text-gray-600 hover:text-primary-700 transition-colors">Harga</a>
+            <a href="#faq" class="block text-gray-600 hover:text-primary-700 transition-colors">FAQ</a>
+            <a href="#pricing"
+                class="block mt-2 bg-primary-700 text-white text-center px-5 py-2 rounded-lg shadow hover:bg-primary-800 transition-all">
+                Mulai Sekarang
+            </a>
+        </div>
+    </header>
+
+    <main>
+        <section class="relative bg-cover bg-center"
+            style="background-image: url('/src/img/baju.jpg')">
+            <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+
+            <div class="relative container mx-auto px-6 text-center py-20 md:py-32">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-white leading-tight">
+                    Cara Terbaik Mengelola Laundry Anda
+                </h1>
+                <p class="mt-4 text-lg md:text-xl text-gray-200 max-w-3xl mx-auto">
+                    Bergabung sekarang dengan kami dan rasakan kemudahan mengatur cucian kamu di <b>Cuci
+                    Kering</b>
+                </p>
+                <div class="mt-8 flex justify-center gap-4 flex-wrap">
+                    <a href="#pricing"
+                        class="bg-primary-700 text-white px-8 py-4 rounded-lg text-lg font-semibold shadow-lg hover:bg-primary-800 transform hover:scale-105 transition-all">
+                        Lihat Paket Harga
+                    </a>
+                    <a href="#features"
+                        class="bg-white/20 backdrop-blur-sm text-white px-8 py-4 rounded-lg text-lg font-semibold shadow-lg hover:bg-white/30 transform hover:scale-105 transition-all">
+                        Pelajari Lebih Lanjut
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="features" class="py-20 bg-main">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-center font-extrabold text-3xl pb-3">Kenapa Cuci Kering?</h2>
+                <p class="section-subtitle text-center font-light text-xl">Demi kemudahan urusan cuci-mencuci anda dan
+                    keluarga, kami menyediakan
+                    layanan serba mudah dan terjangkau yang dilengkapi:</p>
+                <div class="mt-16 grid md:grid-cols-3 gap-12">
+                    <div class="text-center bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow">
+                        <div
+                            class="bg-primary-100 text-primary-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto">
+                            <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M20.25 0.75H3.75C2.92157 0.75 2.25 1.42157 2.25 2.25V21.75C2.25 22.5784 2.92157 23.25 3.75 23.25H20.25C21.0784 23.25 21.75 22.5784 21.75 21.75V2.25C21.75 1.42157 21.0784 0.75 20.25 0.75Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M5.25 3.75H8.25" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path d="M2.25 6.75H21.75" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M12 20.25C14.8995 20.25 17.25 17.8995 17.25 15C17.25 12.1005 14.8995 9.75 12 9.75C9.10051 9.75 6.75 12.1005 6.75 15C6.75 17.8995 9.10051 20.25 12 20.25Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path d="M14.25 15H12V12" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <h3 class="mt-6 text-xl font-bold text-gray-800">Toko Terpercaya</h3>
+                        <p class="mt-2 text-gray-600">Mitra laundry kami telah terverifikasi untuk memastikan kualitas
+                            dan keamanan pakaian Anda.</p>
+                    </div>
+                    <div class="text-center bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow">
+                        <div
+                            class="bg-primary-100 text-primary-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto">
+                            <svg class="w-10 h-10" fill="none" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                                <path
+                                    d="M21.5 12c-2.25-4.5-5.25-7.5-9.5-7.5-4.25 0-7.25 3-9.5 7.5 2.25 4.5 5.25 7.5 9.5 7.5 4.25 0 7.25-3 9.5-7.5Z"
+                                    stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg>
+                        </div>
+                        <h3 class="mt-6 text-xl font-bold text-gray-800">Lacak Pesanan</h3>
+                        <p class="mt-2 text-gray-600">Pantau status cucian Anda secara real-time, mulai dari penjemputan
+                            hingga selesai.</p>
+                    </div>
+                    <div class="text-center bg-white p-8 rounded-xl shadow-lg hover:shadow-2xl transition-shadow">
+                        <div
+                            class="bg-primary-100 text-primary-700 rounded-full w-16 h-16 flex items-center justify-center mx-auto">
+                            <svg class="w-10 h-10" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M12 21C12 21 5.25 15.15 5.25 9.75C5.25 6.02208 8.27208 3 12 3C15.7279 3 18.75 6.02208 18.75 9.75C18.75 15.15 12 21 12 21Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M12 12C13.2426 12 14.25 10.9926 14.25 9.75C14.25 8.50736 13.2426 7.5 12 7.5C10.7574 7.5 9.75 8.50736 9.75 9.75C9.75 10.9926 10.7574 12 12 12Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                            </div>
+                        <h3 class="mt-6 text-xl font-bold text-gray-800">Antar Jemput Cepat</h3>
+                        <p class="mt-2 text-gray-600">Nikmati layanan antar jemput gratis. Kurir kami siap mengambil dan
+                            mengantar pakaian Anda.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="testimonials" class="py-20 bg-white">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-center font-extrabold text-3xl pb-3">Apa Kata Pelanggan Kami</h2>
+                <p class="section-subtitle text-center font-light text-xl">Jangan hanya percaya kata kami. Berikut
+                    adalah testimoni dari para pelanggan setia Cuci Kering.</p>
+                <div class="mt-16 grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-gray-50 p-8 rounded-xl border border-gray-200">
+                        <p>"Aplikasi Cuci Kering benar-benar mengubah cara saya mengurus laundry. Sangat praktis dan
+                            hemat waktu. Recommended!"</p>
+                        <div class="mt-4 flex items-center">
+                            <img src="https://i.pravatar.cc/48?u=1" alt="User" class="w-12 h-12 rounded-full">
+                            <div class="ml-4">
+                                <p class="font-semibold text-gray-800">Sarah Anggraini</p>
+                                <p class="text-sm text-gray-600">Ibu Rumah Tangga</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-xl border border-gray-200">
+                        <p>"Sebagai anak kos, layanan ini sangat membantu. Harganya terjangkau dan saya bisa melacak
+                            cucian saya. Tidak ada lagi drama baju hilang."</p>
+                        <div class="mt-4 flex items-center">
+                            <img src="https://i.pravatar.cc/48?u=2" alt="User" class="w-12 h-12 rounded-full">
+                            <div class="ml-4">
+                                <p class="font-semibold text-gray-800">Budi Santoso</p>
+                                <p class="text-sm text-gray-600">Mahasiswa</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 p-8 rounded-xl border border-gray-200">
+                        <p>"Fitur antar jemputnya adalah penyelamat bagi saya yang sibuk bekerja. Tim supportnya juga
+                            sangat ramah dan responsif."</p>
+                        <div class="mt-4 flex items-center">
+                            <img src="https://i.pravatar.cc/48?u=3" alt="User" class="w-12 h-12 rounded-full">
+                            <div class="ml-4">
+                                <p class="font-semibold text-gray-800">Jessica Wijaya</p>
+                                <p class="text-sm text-gray-600">Pegawai Swasta</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pricing" class="py-20 bg-main">
+            <div class="container mx-auto px-6">
+                <h2 class="section-title text-center font-bold text-3xl pb-3">Harga Jujur dan Transparan</h2>
+                <p class="section-subtitle text-center text-xl">Pilih paket yang sesuai kebutuhan Anda. Tanpa biaya
+                    tersembunyi.</p>
+                <div class="mt-16 grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                        <h3 class="text-2xl font-bold text-gray-800">Kiloan</h3>
+                        <p class="mt-2 text-gray-600">Untuk cucian harian.</p>
+                        <p class="mt-6 text-4xl font-extrabold text-gray-900">Rp 8.000<span
+                                class="text-lg font-medium text-gray-500">/kg</span></p>
+                        <ul class="mt-6 space-y-3 text-gray-600">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>Cuci Kering Lipat</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>Pengerjaan 2-3 Hari</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>Antar Jemput Gratis</li>
+                        </ul>
+                        <a href="#"
+                            class="mt-8 block w-full bg-main text-gray-800 text-center py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors">
+                            Pilih Paket
+                        </a>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-xl shadow-2xl border-2 border-primary-700 relative">
+                        <span
+                            class="bg-primary-700 text-white text-xs font-bold px-3 py-1 rounded-full absolute -top-4 right-4">PALING
+                            LARIS</span>
+                        <h3 class="text-2xl font-bold text-primary-700">Express</h3>
+                        <p class="mt-2 text-gray-600">Untuk kebutuhan mendesak.</p>
+                        <p class="mt-6 text-4xl font-extrabold text-gray-900">Rp 15.000<span
+                                class="text-lg font-medium text-gray-500">/kg</span></p>
+                        <ul class="mt-6 space-y-3 text-gray-600">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>Cuci Kering Setrika</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>Selesai dalam 24 Jam</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>Antar Jemput Prioritas</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>Pewangi Premium</li>
+                        </ul>
+                        <a href="#"
+                            class="mt-8 block w-full bg-primary-700 text-white text-center py-3 rounded-lg font-semibold hover:bg-primary-800 transition-colors">
+                            Pilih Paket
+                        </a>
+                    </div>
+
+                    <div class="bg-white p-8 rounded-xl shadow-lg border border-gray-200">
+                        <h3 class="text-2xl font-bold text-gray-800">Satuan</h3>
+                        <p class="mt-2 text-gray-600">Perawatan khusus.</p>
+                        <p class="mt-6 text-2xl font-extrabold text-gray-900">Mulai dari Rp 10.000</p>
+                        <ul class="mt-6 space-y-3 text-gray-600">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>Jas, Gaun, Selimut, dll</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>Perawatan Sesuai Bahan</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="none"
+                                    stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M5 13l4 4L19 7"></path>
+                                </svg>Harga per Item</li>
+                        </ul>
+                        <a href="#"
+                            class="mt-8 block w-full bg-main text-gray-800 text-center py-3 rounded-lg font-semibold hover:bg-gray-300 transition-colors">
+                            Lihat Detail
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="faq" class="py-20 bg-white">
+            <div class="container mx-auto px-6 max-w-3xl">
+                <h2 class="section-title">Pertanyaan yang Sering Diajukan</h2>
+                <p class="section-subtitle">Punya pertanyaan? Kami punya jawabannya. Jika tidak menemukan yang Anda
+                    cari, hubungi kami.</p>
+                <div class="mt-12 space-y-4" id="faq-container">
+                    <div class="bg-gray-50 rounded-lg border border-gray-200">
+                        <button
+                            class="faq-question w-full flex justify-between items-center text-left text-lg font-semibold p-6">
+                            <span>Bagaimana cara memesan layanan?</span>
+                            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer p-6 pt-0">
+                            <p>Anda bisa memesan dengan mudah melalui aplikasi kami yang tersedia di Play Store dan App
+                                Store. Cukup pilih layanan, tentukan jadwal penjemputan, dan kurir kami akan segera
+                                datang ke lokasi Anda.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg border border-gray-200">
+                        <button
+                            class="faq-question w-full flex justify-between items-center text-left text-lg font-semibold p-6">
+                            <span>Apakah ada biaya antar jemput?</span>
+                            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer p-6 pt-0">
+                            <p>Tidak ada. Kami menyediakan layanan antar jemput gratis untuk semua paket dengan minimal
+                                order yang sangat terjangkau.</p>
+                        </div>
+                    </div>
+                    <div class="bg-gray-50 rounded-lg border border-gray-200">
+                        <button
+                            class="faq-question w-full flex justify-between items-center text-left text-lg font-semibold p-6">
+                            <span>Metode pembayaran apa saja yang diterima?</span>
+                            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="faq-answer p-6 pt-0">
+                            <p>Kami menerima berbagai metode pembayaran digital, termasuk transfer bank, e-wallet
+                                (GoPay, OVO, Dana), dan kartu kredit untuk memudahkan transaksi Anda.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h4 class="text-lg font-semibold">Cuci Kering</h4>
+                    <p class="mt-4 text-gray-400">Solusi laundry modern untuk hidup yang lebih praktis dan efisien.</p>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold">Tautan Cepat</h4>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#features" class="text-gray-400 hover:text-white transition-colors">Fitur</a></li>
+                        <li><a href="#pricing" class="text-gray-400 hover:text-white transition-colors">Harga</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Kontak</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold">Legal</h4>
+                    <ul class="mt-4 space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Kebijakan Privasi</a>
+                        </li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Syarat & Ketentuan</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold">Terhubung Dengan Kami</h4>
+                    <div class="mt-4 flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-white transition-colors">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                                <path
+                                    d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.71v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-8 border-t border-gray-700 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 Cuci Kering, Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // --- Script untuk Menu Mobile ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // --- Script untuk FAQ Accordion ---
+        const faqContainer = document.getElementById('faq-container');
+        faqContainer.addEventListener('click', (e) => {
+            const questionButton = e.target.closest('.faq-question');
+
+            if (questionButton) {
+                // Tutup semua jawaban lain
+                const allQuestions = faqContainer.querySelectorAll('.faq-question');
+                allQuestions.forEach(q => {
+                    if (q !== questionButton) {
+                        q.classList.remove('active');
+                    }
+                });
+
+                // Buka/Tutup jawaban yang diklik
+                questionButton.classList.toggle('active');
+            }
+        });
+    </script>
+
+</body>
+
+</html>
